@@ -7,14 +7,12 @@ const nl2p = (page: string): JSXElement =>
 const WorkPage = () => {
   const data = useRouteData();
 
-  console.log({ work: data.work });
-
   return (
     <Suspense fallback={"Loading…"}>
       <div>
-        <h1>{data.work().title}</h1>
-        <p>{data.work().description}</p>
-        <div>{nl2p(data.work().pages[0])}</div>
+        <h1>{data.work()?.title || ""}</h1>
+        <p>{data.work()?.description || ""}</p>
+        <div>{nl2p(data.work()?.pages[0] || "")}</div>
       </div>
     </Suspense>
   );
