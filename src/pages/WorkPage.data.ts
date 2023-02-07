@@ -20,6 +20,9 @@ export const WorkPageData: RouteDataFunc = ({
   navigate,
   data,
 }) => {
+  console.log("WorkPagedata is called");
+  const page = parseInt(location.query?.page) || 1;
+
   const work = createRouteData(
     async ([, workId]) => {
       const work = {
@@ -28,7 +31,7 @@ export const WorkPageData: RouteDataFunc = ({
       };
       return work;
     },
-    { key: () => ["work", params.workname] }
+    { key: () => ["work", params.workname, page] }
   );
 
   return { work };
